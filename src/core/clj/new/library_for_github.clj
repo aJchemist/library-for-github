@@ -90,7 +90,7 @@
      slack-secure]
     :as options}]
   (let [[owner repo]  (str/split github-repository #"/" 2)
-        ssh-key-title (str "DEPLOY KEY: https://travis-ci.org/" owner "/" repo)]
+        ssh-key-title (str "DEPLOY KEY: https://travis-ci.com/" owner "/" repo)]
     ;; validate parsed-opts
     (jio/make-parents (jio/file dir ".ci"))
     (ssh-keygen (jio/file dir ".ci/deploy-key") ssh-key-title)
