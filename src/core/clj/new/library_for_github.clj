@@ -105,6 +105,7 @@
                       "key"       (slurp (jio/file dir ".ci/deploy-key.pub"))
                       "read_only" false}})
     (binding [*sh-dir* dir]
+      (dosh "travis" "sync" "--pro" "-f")
       (when (string? clojars-username)
         (dosh "travis" "env" "--pro" "-r" github-repository "set" "CLOJARS_USERNAME" clojars-username))
       (when (string? clojars-password)
