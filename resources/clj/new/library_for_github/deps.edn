@@ -37,6 +37,11 @@
    :main-opts  ["-m" "cljs-test-runner.main" "-d" "src/test"]}
 
 
+  :eastwood
+  {:extra-deps {jonase/eastwood {:mvn/version "RELEASE"}}
+   :main-opts  ["-m" "eastwood.lint" {:source-paths ["src/core"] :test-paths ["src/test"]}]}
+
+
   :1.9
   {:extra-deps
    {

@@ -5,14 +5,16 @@ language: java
 jdk:
   - openjdk11
   - openjdk8
-  - oraclejdk11
-  - oraclejdk8
+  # - oraclejdk11
+  # - oraclejdk8
 
 
 env:
   matrix:
-    - TESTOPT="-R:1.9 -A:provided:test.test-runner"
-    - TESTOPT="-R:1.10 -A:provided:test.test-runner"
+    # - TESTOPT="-R:1.9 -A:provided:test:test-runner"
+    - TESTOPT="-R:1.10 -A:provided:test:test-runner"
+    # - TESTOPT="-R:1.9 -A:provided:test:eastwood"
+    - TESTOPT="-R:1.10 -A:provided:test:eastwood"
 
 
 install:
