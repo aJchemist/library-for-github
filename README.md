@@ -3,7 +3,7 @@
 
 ``` shell
 clj -Sdeps '{:deps {seancorfield/clj-new {:mvn/version "1.0.199"}}}' -m clj-new.create \
-    https://github.com/ajchemist/library-for-github@db15a462abde02102345ab17f2f32156e09582d5 \
+    https://github.com/ajchemist/library-for-github@7d4811789e4b500b852eceaed5750eb08e039eff \
     $project_name \
     -? \
     -f \
