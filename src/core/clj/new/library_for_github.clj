@@ -52,7 +52,7 @@
 (defn ssh-keygen
   [target key-title]
   (jio/make-parents target)
-  (sh-exit (jsh/sh "ssh-keygen" "-t" "ecdsa" "-b" "521" "-N" "\"\"" "-C" key-title "-f" (str target) :in "y")))
+  (sh-exit (jsh/sh "ssh-keygen" "-t" "ecdsa" "-b" "521" "-P" "''" "-N" "''" "-C" key-title "-f" (str target) :in "y")))
 
 
 ;; ** travis
@@ -110,7 +110,7 @@
         (dosh "travis" "env" "--pro" "-r" github-repository "set" "CLOJARS_USERNAME" clojars-username))
       (when (string? clojars-password)
         (dosh "travis" "env" "--pro" "-r" github-repository "set" "CLOJARS_PASSWORD" clojars-password))
-      (let [[_ encrypted-id] (re-find #"\$encrypted_([^\s]+?)_key" (:out (sh-exit (jsh/sh "travis" "encrypt-file" "--pro" "-r" github-repository (str (jio/file dir ".ci/deploy-key")) (str (jio/file dir ".ci/deploy-key.enc"))))))
+      (let [[_ encrypted-id] (re-find #"\$encrypted_([^\s]+?)_key" (:out (sh-exit (jsh/sh "travis" "encrypt-file" "--pro" "-r" github-repository (str (jio/file dir ".ci/deploy-key")) (str (jio/file dir ".ci/deploy-key.enc")) "--force"))))
             slack-secure     (when (string? slack-secure)
                                (strip-quotes (:out (sh-exit (jsh/sh "travis" "encrypt" "--pro" "-r" github-repository slack-secure)))))]
         {:encrypted-id encrypted-id
