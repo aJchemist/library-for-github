@@ -113,8 +113,9 @@
       (let [[_ encrypted-id] (re-find #"\$encrypted_([^\s]+?)_key" (:out (sh-exit (jsh/sh "travis" "encrypt-file" "--pro" "-r" github-repository (str (jio/file dir ".ci/deploy-key")) (str (jio/file dir ".ci/deploy-key.enc")) "--force"))))
             slack-secure     (when (string? slack-secure)
                                (strip-quotes (:out (sh-exit (jsh/sh "travis" "encrypt" "--pro" "-r" github-repository slack-secure)))))]
-        {:encrypted-id encrypted-id
-         :slack-secure slack-secure}))))
+        {:github-repository github-repository
+         :encrypted-id      encrypted-id
+         :slack-secure      slack-secure}))))
 
 
 (defn library-for-github

@@ -58,7 +58,7 @@ jobs:
         - git checkout master
         - git add -- pom.xml
         - git commit -m "$(clojure -A:provided:test -m user.apache.maven.script.get-pom-version) [ci skip]"
-        - git remote add origin-ssh "git@github.com:{{raw-name}}"
+        - git remote add origin-ssh "git@github.com:{{github-repository}}"
         - git remote -v
         - git push -v -u origin-ssh master:refs/heads/master
       deploy:
