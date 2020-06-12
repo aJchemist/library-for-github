@@ -52,7 +52,7 @@
 (defn ssh-keygen
   [target key-title]
   (jio/make-parents target)
-  (sh-exit (jsh/sh "ssh-keygen" "-t" "ecdsa" "-b" "521" "-P" "''" "-N" "''" "-C" key-title "-f" (str target) :in "y")))
+  (sh-exit (jsh/sh "ssh-keygen" "-t" "ecdsa" "-b" "521" "-P" "" "-N" "" "-C" key-title "-f" (str target) :in "y")))
 
 
 ;; ** travis
