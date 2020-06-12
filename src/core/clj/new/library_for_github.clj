@@ -129,8 +129,6 @@
       [".gitignore" (render ".gitignore" data)]
       [".dir-locals.el" (render ".dir-locals.el" data)]
       ;;
-      ["README.md" (render "README.md" data)]
-      ;;
       ["deps.edn" (render "deps.edn" data)]
       "src/core"
       "src/test"
@@ -140,4 +138,5 @@
       (println "CI data:" (pr-str data'))
       (t/->files
         data'
-        [".travis.yml" (render ".travis.yml" data')]))))
+        [".travis.yml" (render ".travis.yml" data')]
+        ["README.md" (render "README.md" data')]))))
